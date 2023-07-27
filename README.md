@@ -5,3 +5,5 @@
 **Counter**: Increment, decrement and reset a counter
 
 **Reviews**: "Testimonies" from users in a card form
+
+**Notes**: A notes app, with an option to delete notes and a checkbox for completed tasks
