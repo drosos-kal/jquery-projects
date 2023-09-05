@@ -4,22 +4,27 @@ const monthsGr = ['Ιανουαρίου', 'Φεβρουαρίου', 'Μαρτί�
                 'Ιουλίου', 'Αυγούστου', 'Σεπτεμβρίου', 'Οκτωβρίου', 'Νοεμβρίου', 'Δεκεμβρίου']
 
 
-    $(document).ready(function() {
-        setInterval(printGRDate, 1000)
 
-        $('#addNoteBtn').on('click', function() {
-            insertNote($('#inputNote').val().trim())
-            reset()
-        })
+//Listeners
+$(document).ready(function() {
+    setInterval(printGRDate, 1000)
 
-        $('#inputNote').on('keyup', function(e) {
-            if (e.key === 'Enter') {
-                insertNote($(this).val().trim())
-                reset()
-            }
-        })
+    $('#addNoteBtn').on('click', function() {
+        insertNote($('#inputNote').val().trim())
+        reset()
     })
 
+    $('#inputNote').on('keyup', function(e) {
+        if (e.key === 'Enter') {
+            insertNote($(this).val().trim())
+            reset()
+        }
+    })
+})
+
+/**
+ * Displays the current date and time dynamically.
+ */
 function printGRDate() {
     const currentDate = new Date()
     const day = currentDate.getDay()
@@ -38,6 +43,10 @@ function printGRDate() {
     $('#dateText').html(strDate + "<br>" + strTime)
 }
 
+/**
+ * Inserts a new note in the notepad.
+ * @param {String} note - The note to be inserted in the notepad.
+ */
 function insertNote(note) {
     if (!note) {
         return
@@ -66,14 +75,25 @@ function insertNote(note) {
     $('.notes-wrapper').append(clone)
 }
 
+/**
+ * If the user clicks on an existing note toggles the 'line-through' class.
+ * @param {HTMLElement} element - The note the user clicked on. 
+ */
 function strikeThrough(element) {
     element.toggleClass('line-through')
 }
 
+/**
+ * Deletes a note
+ * @param {HTMLElement} note - The note to be deleted. 
+ */
 function deleteNote(note) {
     note.remove()
 }
 
+/**
+ * Resets the text on the input area to blank.
+ */
 function reset() {
     $('#inputNote').val('')
 }

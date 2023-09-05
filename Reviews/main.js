@@ -7,7 +7,7 @@ const reviews = [
 
 let personaId = Math.floor(Math.random() * reviews.length)
 
-
+// Listeners
 $(document).ready(function() {
     showPersonaById(personaId)
 
@@ -20,7 +20,10 @@ $(document).ready(function() {
     })
 })
 
-
+/**
+ * Parses the data from the javascript object and displays them  
+ * @param {number} personaId - The id of the persona to be displayed
+ */
 function showPersonaById(personaId) {
     const persona = reviews.find(p => p.id === personaId)
     const {personaName, job, img: image, descr } = persona
